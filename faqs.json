@@ -1,0 +1,1178 @@
+[
+  {
+    "id": 1,
+    "topic": "Account & Registration",
+    "question": "How do I create a TAIKAI account?",
+    "answer": "You can register at /signup using one of three methods: (1) Email + Password -- enter your email, choose a username, and set a password; (2) Social Login -- sign up via GitHub, Google, or LinkedIn; (3) Ethereum Wallet -- connect your Web3 wallet (e.g. MetaMask) at /login/wallet."
+  },
+  {
+    "id": 2,
+    "topic": "Account & Registration",
+    "question": "What are the username and password requirements?",
+    "answer": "Usernames must be 2-39 characters, alphanumeric and hyphens only, and cannot start or end with a hyphen. Passwords must be between 9 and 72 characters. Full names must be 2-150 characters."
+  },
+  {
+    "id": 3,
+    "topic": "Account & Registration",
+    "question": "What happens after I register?",
+    "answer": "You'll be redirected to an onboarding flow where you can fill in your profile details in two steps: (1) About You -- full name, gender, birth date, job title, city, country, skills, and Twitter URL; (2) Links -- GitHub, LinkedIn, Facebook, Instagram, Discord username, and personal website. Completing these fields is optional but earns you Points."
+  },
+  {
+    "id": 4,
+    "topic": "Account & Registration",
+    "question": "Do I need to confirm my email?",
+    "answer": "Yes. After registering with email, a confirmation email is sent. Click the link to verify your account. Some features may be restricted until your email is confirmed."
+  },
+  {
+    "id": 5,
+    "topic": "Account & Registration",
+    "question": "Can I sign up using a friend's referral?",
+    "answer": "Yes. Visit /signup/{friendUsername} to register with a referral link. The referrer will receive Points once the referral program is fully active."
+  },
+  {
+    "id": 6,
+    "topic": "Account & Registration",
+    "question": "Can I change my username later?",
+    "answer": "Yes. Go to Settings > Account and use the \"Change Username\" option."
+  },
+  {
+    "id": 7,
+    "topic": "Account & Registration",
+    "question": "Can I change my email address?",
+    "answer": "Yes. Go to Settings > Account and use the \"Change Email\" option."
+  },
+  {
+    "id": 8,
+    "topic": "Account & Registration",
+    "question": "How do I delete my account?",
+    "answer": "Go to Settings > Account and scroll to the \"Delete Account\" section. This action is permanent and cannot be undone."
+  },
+  {
+    "id": 9,
+    "topic": "Account & Registration",
+    "question": "I tried creating an account but it says my email already exists, and the \"forgot password\" option says my email is invalid. What do I do?",
+    "answer": "This can happen if your account was registered via a social login (Google, GitHub, LinkedIn) or Ethereum wallet rather than email and password -- in that case no password is set, so the reset flow doesn't recognise the email. Try signing in with the social provider you used originally. If you're still stuck, contact support@taikai.network."
+  },
+  {
+    "id": 10,
+    "topic": "Account & Registration",
+    "question": "The confirmation link in my email says it's expired. What do I do?",
+    "answer": "Confirmation links expire after a limited time. Go to the login page and look for an option to resend the confirmation email, or contact support@taikai.network and we'll send a new one."
+  },
+  {
+    "id": 11,
+    "topic": "Account & Registration",
+    "question": "I'm not receiving the confirmation email on my Hotmail address. Can you help?",
+    "answer": "Hotmail/Outlook accounts sometimes filter TAIKAI emails aggressively. Check your Junk and Spam folders, and also the \"Other\" inbox tab if you use Outlook's focused inbox. Add support@taikai.network to your safe senders list. If the email still doesn't arrive, contact TAIKAI support."
+  },
+  {
+    "id": 12,
+    "topic": "Account & Registration",
+    "question": "I'm stuck on the CAPTCHA when trying to create an account. What should I do?",
+    "answer": "Try refreshing the page and attempting the CAPTCHA again. Disable any browser extensions that may interfere (ad blockers, privacy extensions), or try a different browser. If the issue persists, contact TAIKAI support."
+  },
+  {
+    "id": 13,
+    "topic": "Account & Registration",
+    "question": "The website keeps loading indefinitely when I try to log in or create an account. What's wrong?",
+    "answer": "This is usually a temporary issue. Try clearing your browser cache and cookies, disabling browser extensions, or using a different browser or network. If the problem persists, contact TAIKAI support."
+  },
+  {
+    "id": 14,
+    "topic": "Account & Registration",
+    "question": "I registered but the login keeps redirecting me back to the login page without logging me in. What's wrong?",
+    "answer": "This can be caused by browser cookie settings blocking the session cookie. Make sure cookies are enabled for taikai.network, try a different browser, or clear your existing cookies. If the problem continues, contact TAIKAI support."
+  },
+  {
+    "id": 15,
+    "topic": "Account & Registration",
+    "question": "I signed up with a social login (Google, GitHub, LinkedIn, MetaMask) but now can't find my account. What should I do?",
+    "answer": "Make sure you're using the exact same social login provider you used when signing up -- accounts created via social login are tied to that provider. Try each provider you may have used. If you still can't access your account, contact support@taikai.network with the email address associated with your social account."
+  },
+  {
+    "id": 16,
+    "topic": "Account & Registration",
+    "question": "My password reset emails are not arriving and I later found out I had unsubscribed from TAIKAI emails. Can this be fixed?",
+    "answer": "Yes. Contact support@taikai.network and ask to be resubscribed. Once resolved, you'll be able to receive password reset and other transactional emails again."
+  },
+  {
+    "id": 17,
+    "topic": "Account & Registration",
+    "question": "I'm getting an \"Error while signing up -- verify your data and try again\" message during registration. What does this mean?",
+    "answer": "This usually means one of the fields doesn't meet the requirements (e.g. the username is already taken, contains invalid characters, or the password is too short). Double-check that your username is 2-39 alphanumeric characters (hyphens allowed, not at start/end), your password is 9-72 characters, and your email is valid. If the error persists, contact TAIKAI support."
+  },
+  {
+    "id": 18,
+    "topic": "Account & Registration",
+    "question": "I changed my email address in my profile settings and now I can't log in at all. How do I recover access?",
+    "answer": "After changing your email, a confirmation email is sent to the new address. You must click the confirmation link before the new email becomes active for login. Check your new email's inbox and spam folder for the confirmation link. If you no longer have access to either email, contact support@taikai.network."
+  },
+  {
+    "id": 19,
+    "topic": "Account & Registration",
+    "question": "The email login is case-sensitive -- is that expected?",
+    "answer": "Email addresses themselves are not case-sensitive on TAIKAI, but passwords are. If you're having trouble logging in, make sure Caps Lock is off and try your password exactly as you set it."
+  },
+  {
+    "id": 20,
+    "topic": "Account & Registration",
+    "question": "I blocked TAIKAI emails and now I'm not receiving team invitations or notifications. How do I fix this?",
+    "answer": "Add support@taikai.network and no-reply@taikai.network to your email safe senders / whitelist. Also check your spam and junk folders. If you unsubscribed, contact support@taikai.network to be resubscribed to transactional emails."
+  },
+  {
+    "id": 21,
+    "topic": "Account & Registration",
+    "question": "My account was blocked for suspicious activities and I can't log in. What can I do?",
+    "answer": "Contact TAIKAI support at support@taikai.network explaining the situation. Our team will review your account and, if it was blocked in error, restore access."
+  },
+  {
+    "id": 22,
+    "topic": "Account & Registration",
+    "question": "The \"Continue\" button on the password reset page is greyed out and won't click. What should I do?",
+    "answer": "Make sure you've entered a valid email address in the field -- the button activates only when a properly formatted email is entered. If the button remains greyed out after entering your email, try a different browser or clear your cache, then contact support if the issue persists."
+  },
+  {
+    "id": 23,
+    "topic": "Account & Registration",
+    "question": "Can I create an account using an Ethereum wallet (MetaMask)?",
+    "answer": "Yes. On the registration or login page, select the Ethereum wallet option, connect your MetaMask (or compatible wallet), and sign the authentication message. No email or password is required for this method."
+  },
+  {
+    "id": 24,
+    "topic": "Login & Authentication",
+    "question": "How do I log in?",
+    "answer": "Visit /login and choose one of these methods: (1) Email/Username + Password; (2) Social Login via GitHub, Google, or LinkedIn; (3) Ethereum Wallet -- click the Ethereum button to open the wallet selector and sign a message to authenticate."
+  },
+  {
+    "id": 25,
+    "topic": "Login & Authentication",
+    "question": "What is Two-Factor Authentication (2FA)?",
+    "answer": "2FA adds an extra layer of security to your account. After entering your password, you'll be prompted to enter a 6-digit code from an authenticator app (e.g. Google Authenticator, Authy)."
+  },
+  {
+    "id": 26,
+    "topic": "Login & Authentication",
+    "question": "How do I enable 2FA?",
+    "answer": "Go to Settings > Account > Two-Factor Authentication, click \"Enable 2FA\", scan the QR code with your authenticator app, and enter the 6-digit code to confirm. Make sure to save your backup codes -- they are your recovery option if you lose access to your authenticator."
+  },
+  {
+    "id": 27,
+    "topic": "Login & Authentication",
+    "question": "Why is 2FA required for withdrawals?",
+    "answer": "To protect your funds, TAIKAI requires 2FA to be enabled before you can withdraw $LX tokens. If 2FA is not active, the withdrawal page will prompt you to enable it first."
+  },
+  {
+    "id": 28,
+    "topic": "Login & Authentication",
+    "question": "What if I lose access to my authenticator app?",
+    "answer": "During 2FA setup, you receive backup codes. Use one of these codes on the login screen by selecting the \"Use backup code\" option. If you have lost both your authenticator and backup codes, contact TAIKAI support."
+  },
+  {
+    "id": 29,
+    "topic": "Login & Authentication",
+    "question": "My account is locked. What happened?",
+    "answer": "After multiple failed login attempts, your account is temporarily locked for security. A message will display how long the lockout lasts. Wait for the lockout period to expire and try again."
+  },
+  {
+    "id": 30,
+    "topic": "Login & Authentication",
+    "question": "What is SSO login?",
+    "answer": "Single Sign-On (SSO) is available for organizations that have configured it. Members of such organizations can log in via their organization's identity provider at /login/sso."
+  },
+  {
+    "id": 31,
+    "topic": "Login & Authentication",
+    "question": "What does \"Sign-In with Ethereum\" (SIWE) mean?",
+    "answer": "SIWE is a standardized method (EIP-4361) that lets you prove ownership of your Ethereum wallet by signing a message. No password is needed -- your wallet signature is your authentication."
+  },
+  {
+    "id": 32,
+    "topic": "Login & Authentication",
+    "question": "I'm having trouble logging in. What should I do?",
+    "answer": "Double-check your email/username and password (passwords are case-sensitive). If your account is locked, wait for the lockout period to expire. If your account is suspended, a message will show the details -- contact support. For 2FA issues, use a backup code. If you forgot your password, click \"Can't log in?\" on the login page or visit /password/reset."
+  },
+  {
+    "id": 33,
+    "topic": "Login & Authentication",
+    "question": "I didn't receive my confirmation email. What can I do?",
+    "answer": "Check your spam/junk folder, verify you entered the correct email address, and try requesting a new confirmation email. If the problem persists, contact TAIKAI support."
+  },
+  {
+    "id": 34,
+    "topic": "Login & Authentication",
+    "question": "Why can't I log in with Google or Microsoft even though my account already exists?",
+    "answer": "If your account was originally created with email and password, social login providers are not automatically linked. Try logging in with your email and password instead. To link a social account for future logins, go to Settings > Account > Connected Accounts after signing in. Note that Microsoft login is not currently supported -- use Google, GitHub, or LinkedIn."
+  },
+  {
+    "id": 35,
+    "topic": "Login & Authentication",
+    "question": "I set up two-factor authentication (2FA) and now I'm locked out of my account. What can I do?",
+    "answer": "Use one of the backup codes you received when setting up 2FA -- on the login screen, select \"Use backup code\" and enter a code. If you no longer have your backup codes, contact support@taikai.network and our team will help you regain access after verifying your identity."
+  },
+  {
+    "id": 36,
+    "topic": "Login & Authentication",
+    "question": "I set up 2FA with an authenticator app but no longer have access to that device. How do I disable 2FA?",
+    "answer": "Use a backup code to log in (select \"Use backup code\" on the 2FA screen). Once logged in, go to Settings > Account > Two-Factor Authentication and disable 2FA. If you don't have backup codes either, contact support@taikai.network for account recovery assistance."
+  },
+  {
+    "id": 37,
+    "topic": "Profile Management",
+    "question": "How do I view my profile?",
+    "answer": "Navigate to /{your-username} or click on your avatar/name from the navigation."
+  },
+  {
+    "id": 38,
+    "topic": "Profile Management",
+    "question": "What tabs are on my profile?",
+    "answer": "Your profile has these tabs: Overview (bio, skills, experience, recent projects, POPs), Projects (all submitted projects, visible with 3+), Hackathons (challenges you participated in, visible with 6+), POPs (your Proof of Participation NFTs, visible with 5+), Followers/Following, and Transactions (token history)."
+  },
+  {
+    "id": 39,
+    "topic": "Profile Management",
+    "question": "How do I edit my profile?",
+    "answer": "Visit your profile page, click the Edit button, update your avatar, cover image, bio, skills, experience, and social links, then click Save."
+  },
+  {
+    "id": 40,
+    "topic": "Profile Management",
+    "question": "Can I upload a profile picture and cover image?",
+    "answer": "Yes. In edit mode, use the image pickers to upload or change your avatar and cover image."
+  },
+  {
+    "id": 41,
+    "topic": "Profile Management",
+    "question": "How do I add skills, work experience, or education?",
+    "answer": "In edit mode on your profile, click the respective sections to open editing modals where you can add, edit, or remove entries."
+  },
+  {
+    "id": 42,
+    "topic": "Profile Management",
+    "question": "My profile shows all hackathons, not just the ones I joined. Is this a bug?",
+    "answer": "The Hackathons tab on your profile only becomes visible once you have participated in 6 or more challenges. Before that threshold is reached, the tab may not appear or its display may vary. If you believe you are seeing someone else's hackathons on your profile, try clearing your browser cache and logging out and back in. Contact support if the problem continues."
+  },
+  {
+    "id": 43,
+    "topic": "Profile Management",
+    "question": "I can't edit my profile information and my previously entered details are not showing. What should I do?",
+    "answer": "Try refreshing the page. If the issue persists, clear your browser cache and try a different browser. Make sure you are logged in to the correct account. If your details were saved previously but are now missing, contact support@taikai.network."
+  },
+  {
+    "id": 44,
+    "topic": "Profile Management",
+    "question": "How do I change my date of birth on my profile?",
+    "answer": "Go to your profile's edit mode and update the birth date field under \"About You\". If the field is not editable or you do not see it, contact support@taikai.network for assistance."
+  },
+  {
+    "id": 45,
+    "topic": "Profile Management",
+    "question": "My username shows as the default name from my Google account even after I changed it. Did the change save?",
+    "answer": "It may take a moment to update. Refresh the page after saving. If the old name persists, go to Settings > Account > Change Username and confirm the new username was saved there. If it still shows the old name, try logging out and back in."
+  },
+  {
+    "id": 46,
+    "topic": "Profile Management",
+    "question": "How do I find out what email address is registered on my account?",
+    "answer": "Go to Settings > Account -- your registered email address is displayed there."
+  },
+  {
+    "id": 47,
+    "topic": "Profile Management",
+    "question": "I'm getting an error when adding my X (Twitter) profile URL. What format should I use?",
+    "answer": "Enter your Twitter/X handle without the @ symbol and without the full URL -- just your username (e.g. yourhandle). Some profile fields accept the full URL format (https://x.com/yourhandle); if one format gives an error, try the other."
+  },
+  {
+    "id": 48,
+    "topic": "Profile Management",
+    "question": "My profile completion percentage is stuck at less than 100% but I can't see what is missing. What should I do?",
+    "answer": "Go to the Points page (/points) and check the Profile Completion Quests section -- it lists each individual field and whether it has been completed. Common missing items include academic experience, work experience, connecting a wallet, or linking a Twitter/GitHub/LinkedIn account."
+  },
+  {
+    "id": 49,
+    "topic": "Hackathons & Challenges",
+    "question": "How do I find hackathons to participate in?",
+    "answer": "Visit /hackathons to browse all available challenges. You can filter by industry (Web3, AI, Health, Education, etc.), sort by Relevance or Most Recent, and search by keyword."
+  },
+  {
+    "id": 50,
+    "topic": "Hackathons & Challenges",
+    "question": "What is the difference between a \"Challenge\" and a \"Hackathon\"?",
+    "answer": "They are the same thing. TAIKAI uses these terms interchangeably -- a Challenge (also called Hackathon) is a competition hosted by an organization where participants submit projects."
+  },
+  {
+    "id": 51,
+    "topic": "Hackathons & Challenges",
+    "question": "How do I join a hackathon?",
+    "answer": "Navigate to the challenge page, click \"Join Challenge\" (you must be logged in), fill out any custom registration form if required, and submit to complete your registration."
+  },
+  {
+    "id": 52,
+    "topic": "Hackathons & Challenges",
+    "question": "Why can't I join a specific hackathon?",
+    "answer": "Possible reasons: registration is closed, the challenge is private or invitation-only, your email domain is not on the organizer's whitelist, or you are already registered."
+  },
+  {
+    "id": 53,
+    "topic": "Hackathons & Challenges",
+    "question": "What are Challenge Steps/Phases?",
+    "answer": "Each hackathon progresses through multiple phases (e.g. Registration, Submission, Voting, Results). Each phase has start and end dates. The Timeline tab on the challenge page shows the full schedule."
+  },
+  {
+    "id": 54,
+    "topic": "Hackathons & Challenges",
+    "question": "What tabs are available on a challenge page?",
+    "answer": "Depending on the organizer's configuration: Overview/Timeline, Rules, Prizes, Projects, Results, Participants, Juries, Mentors, Matchmaking, Resources, Categories, Updates, Transactions, and Preferences. Organizers may also add custom tabs."
+  },
+  {
+    "id": 55,
+    "topic": "Hackathons & Challenges",
+    "question": "What is the Leaderboard?",
+    "answer": "The Leaderboard shows project rankings per voting track. You can view Solo Tracks (individual category rankings) and Global Tracks (cross-category rankings)."
+  },
+  {
+    "id": 56,
+    "topic": "Hackathons & Challenges",
+    "question": "Can I participate in multiple hackathons at the same time?",
+    "answer": "Yes. You can register for and participate in multiple challenges simultaneously. Your Dashboard shows upcoming steps across all your active challenges."
+  },
+  {
+    "id": 57,
+    "topic": "Hackathons & Challenges",
+    "question": "Do all team members need to individually register on the platform?",
+    "answer": "Yes. Every team member must have their own TAIKAI account and must individually register for the hackathon before they can be added to a project team."
+  },
+  {
+    "id": 58,
+    "topic": "Hackathons & Challenges",
+    "question": "Can I still join a hackathon after the registration deadline has passed?",
+    "answer": "No. Once registration closes, the system does not allow new participants to join. Check the hackathon's Timeline tab for registration dates. If you believe registration should still be open, contact the hackathon organizer."
+  },
+  {
+    "id": 59,
+    "topic": "Hackathons & Challenges",
+    "question": "Can participants unregister from a hackathon?",
+    "answer": "Some challenges do not allow unregistering once you have joined. If you need to withdraw, contact the hackathon organizer directly, as they may be able to remove your registration manually."
+  },
+  {
+    "id": 60,
+    "topic": "Hackathons & Challenges",
+    "question": "Where can I find the hackathon rules and requirements?",
+    "answer": "On the challenge page, check the Rules tab. Additional requirements may be listed in the Overview tab or pinned Updates."
+  },
+  {
+    "id": 61,
+    "topic": "Hackathons & Challenges",
+    "question": "I registered for a hackathon but it shows a \"Permission Denied\" error. What is happening?",
+    "answer": "This can happen if the hackathon requires organizer approval of registrations and yours hasn't been approved yet, or if you are trying to access a section restricted to a different role. Contact the hackathon organizer to confirm your registration status."
+  },
+  {
+    "id": 62,
+    "topic": "Hackathons & Challenges",
+    "question": "My hackathon registration appears to be under review. What does that mean and how long will it take?",
+    "answer": "Some hackathons require organizers to manually approve registrations. Review times vary by organizer -- check the hackathon's communication channels or contact the organizer directly for an estimate."
+  },
+  {
+    "id": 63,
+    "topic": "Hackathons & Challenges",
+    "question": "I haven't received an acceptance email. Does that mean I was not selected?",
+    "answer": "Not necessarily. Some hackathons send acceptance emails while others only update your status on the platform. Check your registration status on the challenge page. Also check your spam folder. If you're unsure, contact the hackathon organizer."
+  },
+  {
+    "id": 64,
+    "topic": "Hackathons & Challenges",
+    "question": "The hackathon I want to join doesn't show a \"Join\" button. Why?",
+    "answer": "The Join button is hidden when: registration is not yet open, registration has closed, the challenge is private or invitation-only, or you are already registered. Check the Timeline tab for registration dates."
+  },
+  {
+    "id": 65,
+    "topic": "Hackathons & Challenges",
+    "question": "I accidentally registered at the wrong location for a hackathon. How can I change it?",
+    "answer": "Check the hackathon's Preferences tab (visible to registered participants) to see if you can update your location preference. If not, contact the hackathon organizer to request the change."
+  },
+  {
+    "id": 66,
+    "topic": "Hackathons & Challenges",
+    "question": "I need to cancel my attendance at a hackathon -- how do I do it?",
+    "answer": "Some challenges allow participants to unregister from the Preferences tab. If no such option is available, contact the hackathon organizer to request cancellation."
+  },
+  {
+    "id": 67,
+    "topic": "Hackathons & Challenges",
+    "question": "Can I change my registration answers (e.g., switch from online to in-person attendance) after submitting?",
+    "answer": "This depends on the hackathon organizer's settings. Check the Preferences tab on the challenge page. If you cannot edit your answers there, contact the organizer to request the change."
+  },
+  {
+    "id": 68,
+    "topic": "Hackathons & Challenges",
+    "question": "Do I need a ticket to attend a hackathon that is co-located with a paid conference?",
+    "answer": "TAIKAI manages hackathon registrations, but conference tickets are handled separately by the event organizer. Check the hackathon's Rules or Overview tab for details, or contact the organizer directly for clarification."
+  },
+  {
+    "id": 69,
+    "topic": "Projects & Submissions",
+    "question": "How do I create a project?",
+    "answer": "Go to the challenge page and look for \"Create Project\". Enter your project name (3-50 characters) and a short description/teaser (3-200 characters), invite team members (must be registered participants of the same challenge), and your project is created."
+  },
+  {
+    "id": 70,
+    "topic": "Projects & Submissions",
+    "question": "What can I add to my project?",
+    "answer": "As a project owner you can: write a detailed description (rich text), add a video URL (demo or pitch), add a demo URL and code repository URL, assign challenge categories, add custom tags, upload a logo and cover image, and upload file attachments."
+  },
+  {
+    "id": 71,
+    "topic": "Projects & Submissions",
+    "question": "How do I publish my project?",
+    "answer": "After filling in your project details, change the project state to ACTIVE to publish it. Published projects are visible to all challenge participants, juries, and visitors."
+  },
+  {
+    "id": 72,
+    "topic": "Projects & Submissions",
+    "question": "Can I delete my project?",
+    "answer": "Yes. Project owners have the option to delete their project from the project page."
+  },
+  {
+    "id": 73,
+    "topic": "Projects & Submissions",
+    "question": "Is there a maximum team size?",
+    "answer": "Some challenges set a maximum members per project limit. If the limit is reached, you won't be able to add more team members."
+  },
+  {
+    "id": 74,
+    "topic": "Projects & Submissions",
+    "question": "Can I fork someone else's project?",
+    "answer": "Only if the challenge organizer has explicitly enabled the fork feature. When available, a \"Fork\" option appears on the project page."
+  },
+  {
+    "id": 75,
+    "topic": "Projects & Submissions",
+    "question": "Why can't I edit my submission?",
+    "answer": "After the deadline or final validation, editing may be disabled. Ensure the challenge hasn't ended -- you cannot modify projects after the deadline. Also check that your project name is 3-50 characters and teaser is 3-200 characters."
+  },
+  {
+    "id": 76,
+    "topic": "Projects & Submissions",
+    "question": "Can I change my project before the deadline?",
+    "answer": "You can only change your project before the submission deadline. If the deadline hasn't passed yet, you should still be able to edit and update it."
+  },
+  {
+    "id": 77,
+    "topic": "Projects & Submissions",
+    "question": "Can I submit multiple projects?",
+    "answer": "This depends on the specific challenge rules."
+  },
+  {
+    "id": 78,
+    "topic": "Projects & Submissions",
+    "question": "I missed the deadline. Can I still submit?",
+    "answer": "Unfortunately, after the deadline, the system automatically blocks submissions."
+  },
+  {
+    "id": 79,
+    "topic": "Projects & Submissions",
+    "question": "My project needs to be published to count as a submission -- is just creating a draft enough?",
+    "answer": "No. A draft project is not counted as a submission. You must change the project state to ACTIVE (publish it) before the deadline for it to be considered a valid submission."
+  },
+  {
+    "id": 80,
+    "topic": "Projects & Submissions",
+    "question": "I submitted a project but I'm not sure if it's participating. How can I confirm?",
+    "answer": "Go to your project page and check that its state shows as ACTIVE. You should also see it listed under the challenge's Projects tab. If the project is still in draft state, publish it before the deadline."
+  },
+  {
+    "id": 81,
+    "topic": "Projects & Submissions",
+    "question": "Images I uploaded to the Assets section of my project are not displaying. What should I do?",
+    "answer": "Try refreshing the page. If images still don't appear, check that the file format is supported (JPEG, PNG, GIF, WebP are generally accepted) and that the file size is not too large. Try re-uploading the image. If the issue persists, contact TAIKAI support."
+  },
+  {
+    "id": 82,
+    "topic": "Projects & Submissions",
+    "question": "I'm getting a \"server error\" when trying to update my project. What should I do?",
+    "answer": "Try saving again after a few seconds -- it may be a temporary server issue. If the error persists, try a different browser or clear your cache. Contact support@taikai.network if it continues, including a description of what you were trying to update."
+  },
+  {
+    "id": 83,
+    "topic": "Projects & Submissions",
+    "question": "After deleting a project, I can't reuse the same name for a new one. What should I do?",
+    "answer": "Deleted project names may be temporarily reserved. Try using a slightly different name (e.g. adding a version number). If the name is still unavailable after some time, contact support@taikai.network."
+  },
+  {
+    "id": 84,
+    "topic": "Projects & Submissions",
+    "question": "What should I submit at each stage of a hackathon?",
+    "answer": "Submission requirements vary by hackathon. Check the Rules tab and each phase's description in the Timeline tab for details on what is expected at each stage. Contact the organizer if the requirements are unclear."
+  },
+  {
+    "id": 85,
+    "topic": "Projects & Submissions",
+    "question": "Can I change the name of my project after publishing it?",
+    "answer": "Yes, you can edit the project name as long as the submission deadline has not passed and editing is still enabled for the challenge. The name must be 3-50 characters."
+  },
+  {
+    "id": 86,
+    "topic": "Projects & Submissions",
+    "question": "What file formats can I upload to my project?",
+    "answer": "TAIKAI supports common file formats for project attachments. For images (logo, cover), JPEG and PNG are recommended. For attachments, PDF and common document formats are generally accepted. Very large files may be rejected -- check the upload prompt for size limits."
+  },
+  {
+    "id": 87,
+    "topic": "Projects & Submissions",
+    "question": "Only one team member can publish the project -- what if the project owner is unavailable close to the deadline?",
+    "answer": "Project ownership cannot be transferred. To prevent this situation, make sure the project is published well before the deadline, or coordinate with your team owner in advance. If you are in this situation and the deadline is imminent, contact support@taikai.network urgently."
+  },
+  {
+    "id": 88,
+    "topic": "Projects & Submissions",
+    "question": "How do I add a cover image and avatar to my project so I can publish it?",
+    "answer": "Go to your project's edit page. In the project settings, you'll find image upload fields for the logo/avatar and cover image. Upload the images there, save, then publish."
+  },
+  {
+    "id": 89,
+    "topic": "Projects & Submissions",
+    "question": "My project needs a description to be published but I can't find where to enter it. Where is it?",
+    "answer": "The project description is in the project's edit page under the \"Description\" section (rich text editor). This is separate from the short teaser you entered when creating the project. Fill in the description there, save, and then publish."
+  },
+  {
+    "id": 90,
+    "topic": "Projects & Submissions",
+    "question": "How do I share my project on social media?",
+    "answer": "On your published project page, look for social sharing buttons or copy the project's URL directly from your browser and share it. The URL format is typically /{challengeSlug}/projects/{projectSlug}."
+  },
+  {
+    "id": 91,
+    "topic": "Projects & Submissions",
+    "question": "I received vKAI tokens on my project -- are those the same as TKAI?",
+    "answer": "vKAI and TKAI are related to TAIKAI's token ecosystem but serve different purposes. vKAI are virtual/voting tokens used within the platform for jury backing, while TKAI ($LX) are the transferable utility tokens. Contact support@taikai.network for specific questions about your token balances."
+  },
+  {
+    "id": 92,
+    "topic": "Projects & Submissions",
+    "question": "How do I invite participants using a CSV file?",
+    "answer": "CSV bulk invite is an organizer feature available in the hackathon management tools. If you are a participant looking to add teammates, use the individual invite flow from the Participants tab. If you are an organizer, look for the \"Import\" or \"Invite via CSV\" option in your hackathon's admin panel, or contact TAIKAI support for guidance."
+  },
+  {
+    "id": 93,
+    "topic": "Teams & Matchmaking",
+    "question": "How do I find teammates?",
+    "answer": "Multiple ways: (1) Browse open positions on the challenge's Matchmaking tab; (2) View all registered participants on the Participants tab -- some may have a \"Looking for team\" badge; (3) Create open positions on your project to attract applicants."
+  },
+  {
+    "id": 94,
+    "topic": "Teams & Matchmaking",
+    "question": "How do I mark myself as \"looking for a team\"?",
+    "answer": "Go to the challenge page > Preferences tab (only visible to registered participants) and toggle \"Available to Hire\"."
+  },
+  {
+    "id": 95,
+    "topic": "Teams & Matchmaking",
+    "question": "How do I create an open position on my project?",
+    "answer": "Go to your project page > Positions tab, create a new position with a title, description, and required skills. The position appears on the challenge's Matchmaking tab."
+  },
+  {
+    "id": 96,
+    "topic": "Teams & Matchmaking",
+    "question": "How do I apply to join a project?",
+    "answer": "Browse the Matchmaking tab on the challenge page, find a position that interests you, click \"Apply\" and optionally write a message to the project owner."
+  },
+  {
+    "id": 97,
+    "topic": "Teams & Matchmaking",
+    "question": "How do project invitations work?",
+    "answer": "Project owners can invite participants directly from the Participants tab. Invited users receive a notification and can accept or reject from their Dashboard."
+  },
+  {
+    "id": 98,
+    "topic": "Teams & Matchmaking",
+    "question": "I'm getting an error when trying to join a team. How can I fix this?",
+    "answer": "Make sure there are available spots in the team and that the challenge still allows new members at this stage. Some challenges set a maximum members per project limit."
+  },
+  {
+    "id": 99,
+    "topic": "Teams & Matchmaking",
+    "question": "Can I participate alone?",
+    "answer": "Yes, unless the challenge rules require a minimum team size."
+  },
+  {
+    "id": 100,
+    "topic": "Teams & Matchmaking",
+    "question": "I requested to join a team but my name doesn't appear in the team. What's happening?",
+    "answer": "Your request is likely pending approval from the project owner. They must accept your application before you are added. Check your notifications for updates, or contact the project owner directly via messages."
+  },
+  {
+    "id": 101,
+    "topic": "Teams & Matchmaking",
+    "question": "I'm trying to add team members but I get a permissions error. What should I do?",
+    "answer": "Only the project owner can add members. If you are the project owner, make sure the challenge is still in a phase that allows team changes. If the registration or team-building phase has ended, adding members may be locked. Contact the hackathon organizer if you need an exception."
+  },
+  {
+    "id": 102,
+    "topic": "Teams & Matchmaking",
+    "question": "Why can't I find a registered user when trying to add them to my team?",
+    "answer": "The user must be registered for the same hackathon to appear in the search when adding team members. Ask your teammate to confirm they have completed their registration for the challenge. Also check the spelling of their username."
+  },
+  {
+    "id": 103,
+    "topic": "Teams & Matchmaking",
+    "question": "How do I open or close a \"position\" on my team project so others can apply?",
+    "answer": "Go to your project page > Positions tab. You can create new positions (which are open by default) or close existing ones by editing the position and changing its status. Closed positions no longer appear on the Matchmaking tab."
+  },
+  {
+    "id": 104,
+    "topic": "Teams & Matchmaking",
+    "question": "How do I contact someone who has the \"Looking for a team\" tag?",
+    "answer": "Go to the challenge's Participants tab, find the user with the \"Looking for a team\" badge, and click on their profile to send them a message via the platform's Messages feature."
+  },
+  {
+    "id": 105,
+    "topic": "Teams & Matchmaking",
+    "question": "I can't send messages to other participants -- it says I'm not authorized. Why?",
+    "answer": "You must be logged in to send messages. Also, some message flows (such as contacting participants about team positions) may require you to be registered for the same hackathon. If you are logged in and registered, contact TAIKAI support."
+  },
+  {
+    "id": 106,
+    "topic": "Teams & Matchmaking",
+    "question": "My teammate cannot find my profile in the search when trying to add me to the project. Why?",
+    "answer": "Make sure you have completed registration for the hackathon -- team members must be registered participants of the same challenge. Double-check the spelling of your username with your teammate. If you recently registered, try after a few minutes as there may be a short indexing delay."
+  },
+  {
+    "id": 107,
+    "topic": "Voting & Judging",
+    "question": "How does the voting/judging system work?",
+    "answer": "TAIKAI uses a voting cart system for jury members: register as a Jury member, browse submitted projects when voting opens, add projects to your voting cart with scores and assessments, provide appraisals for each criterion if weighted criteria are used, then \"check out\" your cart to submit all votes at once."
+  },
+  {
+    "id": 108,
+    "topic": "Voting & Judging",
+    "question": "What are Voting Tracks?",
+    "answer": "Challenges can have multiple voting tracks: Solo (Independent) Tracks where jury members vote within a specific category, and Global Tracks where jury members vote across all categories."
+  },
+  {
+    "id": 109,
+    "topic": "Voting & Judging",
+    "question": "How do I join as a Jury member?",
+    "answer": "On the challenge page, click \"Join as Jury\" (only available when jury registration is open), confirm in the modal, and you may receive a confirmation email -- click the link to finalize."
+  },
+  {
+    "id": 110,
+    "topic": "Voting & Judging",
+    "question": "Can participants see voting results?",
+    "answer": "The Juries tab shows jury members by voting track. The Results tab (when available) shows final project rankings and reward distribution. The Transactions tab shows all backing transactions."
+  },
+  {
+    "id": 111,
+    "topic": "Voting & Judging",
+    "question": "When will the winners be announced?",
+    "answer": "Depending on the hackathon settings, winners may be announced immediately after the voting stage or only at the end of the hackathon."
+  },
+  {
+    "id": 112,
+    "topic": "Voting & Judging",
+    "question": "My KAI vote doesn't seem to be reflecting. Did it go through?",
+    "answer": "Check the Transactions tab on the challenge page to see if your vote/backing transaction is recorded. If you used the voting cart, make sure you completed the checkout step -- votes are only submitted when you check out. If the transaction is missing, contact TAIKAI support."
+  },
+  {
+    "id": 113,
+    "topic": "Voting & Judging",
+    "question": "What is the voting score scale -- 1 to 5 or 1 to 10?",
+    "answer": "The scoring scale is configured by the hackathon organizer and may vary between challenges. Check the Juries tab or the challenge rules for the specific scale used. Organizers can set custom criteria and score ranges."
+  },
+  {
+    "id": 114,
+    "topic": "Voting & Judging",
+    "question": "The results/leaderboard page seems to be unavailable. Has the organizer published the results?",
+    "answer": "Results are only visible after the organizer publishes them. If the Results tab is missing or empty, the organizer has not yet released the final results. Check the hackathon's Updates tab or contact the organizer for the expected announcement date."
+  },
+  {
+    "id": 115,
+    "topic": "Voting & Judging",
+    "question": "What is the difference between the leaderboard position and the hackathon results?",
+    "answer": "The leaderboard shows real-time or interim project rankings during the voting phase, while the official results are the final rankings published by the organizer after voting closes and any manual adjustments are made. The final results determine prize distribution."
+  },
+  {
+    "id": 116,
+    "topic": "Voting & Judging",
+    "question": "As an organizer, how do I check how each jury member voted?",
+    "answer": "In the hackathon admin panel, go to the Juries or Voting section. You should be able to see individual jury member votes and scores per project. Contact TAIKAI support if you cannot locate this information."
+  },
+  {
+    "id": 117,
+    "topic": "Voting & Judging",
+    "question": "Can mentors vote for projects?",
+    "answer": "No. Mentors and participants cannot vote -- only registered jury members can vote during the judging phase. If a mentor needs to participate in judging, they must also register as a jury member (if the organizer allows it)."
+  },
+  {
+    "id": 118,
+    "topic": "Voting & Judging",
+    "question": "Can I give different jury members different voting criteria to evaluate?",
+    "answer": "Yes. Organizers can configure multiple voting tracks, each with its own set of criteria, and assign specific jury members to each track. This allows different jury members to evaluate projects on different criteria."
+  },
+  {
+    "id": 119,
+    "topic": "Organizer Tools",
+    "question": "Can I change what the hackathon timeline displays (e.g., the number of days left)?",
+    "answer": "The timeline is automatically calculated from the phase start and end dates you configured. To change what is displayed, update the phase dates in your hackathon's admin panel. Contact TAIKAI support if you need help adjusting the timeline display."
+  },
+  {
+    "id": 120,
+    "topic": "Organizer Tools",
+    "question": "How do I close registrations for specific locations or categories in my hackathon?",
+    "answer": "In the hackathon admin panel, go to the registration settings and adjust the capacity or status for specific locations or categories. Contact TAIKAI support for assistance if this option is not visible in your admin panel."
+  },
+  {
+    "id": 121,
+    "topic": "Organizer Tools",
+    "question": "How do I enter or update scores for teams as an organizer?",
+    "answer": "Scores are submitted by jury members through the voting system. As an organizer you can review scores in the Juries/Voting section of the admin panel. If you need to manually adjust scores, contact TAIKAI support."
+  },
+  {
+    "id": 122,
+    "topic": "Organizer Tools",
+    "question": "How do I close a hackathon after it has ended?",
+    "answer": "In the hackathon admin panel, you can update the phase dates to close the active phase and move the challenge to a completed state. Contact TAIKAI support if you need assistance finalizing a hackathon."
+  },
+  {
+    "id": 123,
+    "topic": "Organizer Tools",
+    "question": "Can organizers tell if a participant deleted their project intentionally?",
+    "answer": "Project deletions are logged in the platform's admin activity. Contact TAIKAI support with the hackathon and project details and we can help investigate."
+  },
+  {
+    "id": 124,
+    "topic": "Organizer Tools",
+    "question": "How do I add sponsors to my hackathon page?",
+    "answer": "In the hackathon admin panel, look for a Sponsors section where you can add sponsor logos and links. If you do not see this option, contact TAIKAI support for assistance."
+  },
+  {
+    "id": 125,
+    "topic": "Organizer Tools",
+    "question": "A jury member received an invitation but is not able to vote -- what might be wrong?",
+    "answer": "Common reasons: the jury member did not click the confirmation link in their invitation email, voting has not yet opened, or they are assigned to a voting track with no active projects. Ask them to check their email for a confirmation link and to verify they are registered as a jury member on the challenge page."
+  },
+  {
+    "id": 126,
+    "topic": "Organizer Tools",
+    "question": "How do I disable a tab (e.g., the FAQ tab) on my hackathon page?",
+    "answer": "In the hackathon admin panel, go to the page configuration or tabs settings and toggle off the tab you want to hide. Contact TAIKAI support if you cannot find this option."
+  },
+  {
+    "id": 127,
+    "topic": "Organizer Tools",
+    "question": "Can I publish a hackathon without a card photo?",
+    "answer": "A card image is recommended for visibility but may not be strictly required. Try publishing -- if the platform requires it, an error will indicate the missing field. Contact TAIKAI support if you need to publish urgently without an image."
+  },
+  {
+    "id": 128,
+    "topic": "Organizer Tools",
+    "question": "Can participants change their hackathon registration form answers (e.g., location preference) after submitting?",
+    "answer": "This depends on your hackathon settings. You can configure whether participants can edit their registration answers in the hackathon admin panel. If editing is disabled, participants must contact you as the organizer to request a change."
+  },
+  {
+    "id": 129,
+    "topic": "Organizer Tools",
+    "question": "How do I add a category/track to a project that wasn't listed during submission?",
+    "answer": "Category assignment is typically done by project owners during the submission phase. As an organizer, you may be able to add categories via the admin panel. Contact TAIKAI support for assistance with retroactive category assignments."
+  },
+  {
+    "id": 130,
+    "topic": "Tokens & Payments",
+    "question": "What is the $LX token?",
+    "answer": "$LX is TAIKAI's native utility token on the Polygon blockchain. It is used for challenge prize pools and rewards, jury voting/backing on projects, direct user-to-user transfers, and deposits and withdrawals."
+  },
+  {
+    "id": 131,
+    "topic": "Tokens & Payments",
+    "question": "Where can I see my $LX balance?",
+    "answer": "Your balance is displayed on the Dashboard page and in Settings > Deposit & Withdrawal."
+  },
+  {
+    "id": 132,
+    "topic": "Tokens & Payments",
+    "question": "How do I deposit $LX tokens?",
+    "answer": "Go to Settings > Deposit & Withdrawal > Deposit tab. Your unique Polygon wallet deposit address is displayed. Send $LX tokens from any external wallet to that address. Your balance updates once the on-chain transaction confirms."
+  },
+  {
+    "id": 133,
+    "topic": "Tokens & Payments",
+    "question": "How do I withdraw $LX tokens?",
+    "answer": "Go to Settings > Deposit & Withdrawal > Withdraw tab. 2FA must be enabled on your account. Enter the destination Polygon wallet address and the amount, then enter your 2FA code to confirm. The withdrawal is processed on the Polygon network."
+  },
+  {
+    "id": 134,
+    "topic": "Tokens & Payments",
+    "question": "I can't withdraw my $LX tokens. What's wrong?",
+    "answer": "Common reasons: 2FA is not enabled (you must enable it in Settings > Account first), insufficient balance, or an invalid wallet address (make sure it's a valid Polygon network address)."
+  },
+  {
+    "id": 135,
+    "topic": "Tokens & Payments",
+    "question": "How do I transfer $LX to another TAIKAI user?",
+    "answer": "Open the Transfer modal (accessible from balance displays and user profiles), enter the recipient's username and the amount. A 2FA code is required to confirm."
+  },
+  {
+    "id": 136,
+    "topic": "Tokens & Payments",
+    "question": "What types of token transactions exist?",
+    "answer": "Transaction types include: allocate (prize pool allocation), fund (funding a challenge), back (jury voting/backing), delegate (delegating voting power), transfer (user-to-user), divmember (reward to project team members), divbacker (reward to jury members), withdraw (to external Polygon wallet), and deposit (from external Polygon wallet)."
+  },
+  {
+    "id": 137,
+    "topic": "Tokens & Payments",
+    "question": "What are KAI tokens used for?",
+    "answer": "KAI (also referred to as $LX or TKAI) is TAIKAI's utility token used for prize pools, jury voting/backing, and platform rewards. See the $LX token FAQ entries above for full details on deposits, withdrawals, and transfers."
+  },
+  {
+    "id": 138,
+    "topic": "Tokens & Payments",
+    "question": "Is there a TAIKAI token or coin available to buy on the market?",
+    "answer": "TAIKAI has a native token (TKAI/$LX) that operates on the Polygon network. For current information on availability on exchanges or markets, check TAIKAI's official website or contact support@taikai.network, as market listings can change."
+  },
+  {
+    "id": 139,
+    "topic": "Tokens & Payments",
+    "question": "I'm trying to claim a voucher but I'm getting a \"server error.\" What should I do?",
+    "answer": "Try again after a few minutes -- it may be a temporary issue. If the error persists, contact support@taikai.network with details of the voucher and the error message you received."
+  },
+  {
+    "id": 140,
+    "topic": "Tokens & Payments",
+    "question": "My TKAI tokens are on the Polygon network. Can I use them on an exchange that only supports Ethereum mainnet?",
+    "answer": "No, not directly. TKAI operates on Polygon and is not natively compatible with Ethereum mainnet exchanges. You would need to use a cross-chain bridge to move tokens to Ethereum mainnet first, which involves additional steps and fees. Research bridging options carefully and contact support@taikai.network for guidance."
+  },
+  {
+    "id": 141,
+    "topic": "Points & Rewards",
+    "question": "What are TAIKAI Points?",
+    "answer": "TAIKAI Points are a gamification system that rewards you for platform engagement. Points are separate from $LX tokens and cannot be traded or withdrawn."
+  },
+  {
+    "id": 142,
+    "topic": "Points & Rewards",
+    "question": "How do I earn Points?",
+    "answer": "You can earn points through Profile Completion Quests (10 points each for uploading a photo, cover image, filling in your name, bio, job title, skills, academic experience, work experience, city, country, connecting a wallet, Twitter, GitHub, or LinkedIn) and Activity Quests (e.g. receiving $LX rewards from challenges at 50x multiplier, winning a challenge category for 50 points)."
+  },
+  {
+    "id": 143,
+    "topic": "Points & Rewards",
+    "question": "What are Point Boosters?",
+    "answer": "Boosters are temporary multipliers (e.g. x2) that increase the points you earn. Active boosters are displayed on the Points page."
+  },
+  {
+    "id": 144,
+    "topic": "Points & Rewards",
+    "question": "Where can I see my points?",
+    "answer": "On the Points page (/points) which shows your total balance, active quests, and the leaderboard, or on the Points History page (/points/history) for a chronological log of all point events."
+  },
+  {
+    "id": 145,
+    "topic": "Points & Rewards",
+    "question": "How does the referral program work?",
+    "answer": "When you invite a friend using your referral link (/signup/{yourUsername}), you earn Points once the referral program rewards are processed. The referred friend must complete registration for the referral to count. Check the Points page for any active referral quests and their reward amounts."
+  },
+  {
+    "id": 146,
+    "topic": "Points & Rewards",
+    "question": "Where can I find the referral link to invite friends?",
+    "answer": "Your referral link is taikai.network/signup/{yourUsername}. You can share this link directly. You may also find a share option on the Points page (/points)."
+  },
+  {
+    "id": 147,
+    "topic": "Proof of Participation (POPs)",
+    "question": "What are POPs?",
+    "answer": "Proof of Participation (POPs) are NFTs minted on the blockchain that certify your participation in a specific challenge. They serve as verifiable credentials for your hackathon achievements."
+  },
+  {
+    "id": 148,
+    "topic": "Proof of Participation (POPs)",
+    "question": "How do I mint a POP?",
+    "answer": "Participate in a challenge that supports POPs. After the challenge ends or reaches its final phase, a \"Mint POP\" button appears on the challenge page. Click it, confirm in the modal, and the POP progresses from NOT_MINTED to MINTING to MINTED."
+  },
+  {
+    "id": 149,
+    "topic": "Proof of Participation (POPs)",
+    "question": "Do I need a wallet to mint POPs?",
+    "answer": "Yes. Your account must have an Ethereum wallet connected for the NFT to be sent to your address."
+  },
+  {
+    "id": 150,
+    "topic": "Proof of Participation (POPs)",
+    "question": "Where do my POPs appear?",
+    "answer": "On your profile page under the POPs tab. Other users can see your minted POPs; POPs still in progress are only visible to you."
+  },
+  {
+    "id": 151,
+    "topic": "Proof of Participation (POPs)",
+    "question": "How long does it take for my POP NFT to appear in my wallet after minting?",
+    "answer": "After clicking \"Mint POP\", the NFT goes through a MINTING state before reaching MINTED. This process depends on blockchain confirmation times and can take anywhere from a few minutes to a few hours. If your POP remains in MINTING state for more than 24 hours, contact TAIKAI support."
+  },
+  {
+    "id": 152,
+    "topic": "Web3 & Wallet",
+    "question": "Which wallets are supported?",
+    "answer": "TAIKAI uses RainbowKit for wallet connections, supporting MetaMask and any wallet compatible with the RainbowKit ecosystem (WalletConnect, Coinbase Wallet, etc.)."
+  },
+  {
+    "id": 153,
+    "topic": "Web3 & Wallet",
+    "question": "How do I connect my wallet to my existing account?",
+    "answer": "Go to Settings > Account > Connected Accounts, click \"Connect MetaMask\" (or your preferred wallet), and approve the connection. Your wallet is now linked and can be used for future logins."
+  },
+  {
+    "id": 154,
+    "topic": "Web3 & Wallet",
+    "question": "Can I disconnect my wallet?",
+    "answer": "Yes. In Settings > Account > Connected Accounts, you can disconnect your Ethereum wallet."
+  },
+  {
+    "id": 155,
+    "topic": "Web3 & Wallet",
+    "question": "Which blockchain does TAIKAI use?",
+    "answer": "TAIKAI operates on the Polygon network for token transactions, deposits, and withdrawals."
+  },
+  {
+    "id": 156,
+    "topic": "Web3 & Wallet",
+    "question": "I connected my Ethereum wallet to my account but it still shows as disconnected. What should I do?",
+    "answer": "Try refreshing the page after connecting. Make sure your wallet extension is unlocked and that you approved the connection request in your wallet. If the issue persists, try disconnecting and reconnecting. Contact TAIKAI support if it continues to show as disconnected."
+  },
+  {
+    "id": 157,
+    "topic": "Web3 & Wallet",
+    "question": "I can't connect MetaMask on mobile Safari -- I get a chain error. What should I do?",
+    "answer": "MetaMask on mobile Safari has known compatibility limitations. Try using the MetaMask in-app browser instead -- open the MetaMask mobile app, go to the browser tab, and navigate to taikai.network from there. Alternatively, use a desktop browser with the MetaMask extension, or use WalletConnect which has broader mobile compatibility."
+  },
+  {
+    "id": 158,
+    "topic": "Organizations",
+    "question": "What is an Organization on TAIKAI?",
+    "answer": "Organizations are entities that host challenges/hackathons on the platform. Each organization has a profile page showing their description, location, links, and hosted challenges."
+  },
+  {
+    "id": 159,
+    "topic": "Organizations",
+    "question": "How do I create an organization?",
+    "answer": "Organization creation is not self-service. Visit the \"Organize Your Hackathon\" page or contact TAIKAI directly to request setting up an organization."
+  },
+  {
+    "id": 160,
+    "topic": "Organizations",
+    "question": "How do I find organizations?",
+    "answer": "Browse all organizations at /organizations/all or visit the organizations landing page at /organizations."
+  },
+  {
+    "id": 161,
+    "topic": "Social & Community",
+    "question": "How does the Follow system work?",
+    "answer": "You can follow other users from their profile page. Following someone means their activity appears in your \"Following\" feed."
+  },
+  {
+    "id": 162,
+    "topic": "Social & Community",
+    "question": "What is the Activity Feed?",
+    "answer": "The Feed (/feed) shows recent platform activity in two modes: \"For You\" (curated activity from active projects) and \"Following\" (activity only from users you follow, requires login)."
+  },
+  {
+    "id": 163,
+    "topic": "Social & Community",
+    "question": "What is the Ranking page?",
+    "answer": "The Ranking page (/ranking) shows three leaderboards: Participants (by project activity), Juries (by voting activity), and Global (combining all activity)."
+  },
+  {
+    "id": 164,
+    "topic": "Messages",
+    "question": "How do I send a message to another user?",
+    "answer": "Go to Messages (/messages), click \"Send New Message\", enter the recipient's username, write your message and send."
+  },
+  {
+    "id": 165,
+    "topic": "Messages",
+    "question": "Are messages real-time?",
+    "answer": "Yes. Messages update in real-time via GraphQL subscriptions. Unread message counts are displayed as badges."
+  },
+  {
+    "id": 166,
+    "topic": "Notifications",
+    "question": "What notifications will I receive?",
+    "answer": "In-platform notifications include: token allocations, transfers, and dividends received; challenge publications and announcements; voting/backing confirmations and results; project membership changes; and account validation events."
+  },
+  {
+    "id": 167,
+    "topic": "Notifications",
+    "question": "Can I customize email notifications?",
+    "answer": "Yes. Go to Settings > Notifications to toggle specific email notification categories on/off. An email address must be linked to your account."
+  },
+  {
+    "id": 168,
+    "topic": "Privacy & Security",
+    "question": "What profile visibility options are available?",
+    "answer": "Three options: Public (everyone including non-logged-in visitors and search engines), TAIKAI Users Only (only logged-in users), and Private (only you). Configure this in Settings > Privacy."
+  },
+  {
+    "id": 169,
+    "topic": "Privacy & Security",
+    "question": "Can I hide my profile from search engines?",
+    "answer": "Yes. In Settings > Privacy, enable \"Hide from search engines\" to add a noindex directive to your profile."
+  },
+  {
+    "id": 170,
+    "topic": "Privacy & Security",
+    "question": "What is the \"Open to Work\" setting?",
+    "answer": "In Settings > Privacy, toggling \"Open to Work\" marks you as available for opportunities. Challenge organizers with hiring permissions can identify you as someone open to work or collaboration."
+  },
+  {
+    "id": 171,
+    "topic": "Privacy & Security",
+    "question": "How do I manage active sessions?",
+    "answer": "Go to Settings > Sessions to view all your active login sessions. You can revoke individual sessions to log out from specific devices or browsers."
+  },
+  {
+    "id": 172,
+    "topic": "Settings",
+    "question": "What can I configure in Settings?",
+    "answer": "Settings tabs include: Account (connected accounts, 2FA, change username/email, language, delete account), Deposit & Withdrawal (balance, transaction history, deposit/withdraw $LX), Privacy (profile visibility, search engine indexing, open to work), Notifications (email notification toggles), and Sessions (view and revoke active sessions)."
+  },
+  {
+    "id": 173,
+    "topic": "Settings",
+    "question": "What languages does TAIKAI support?",
+    "answer": "The platform interface is available in English, Portugues (Brasil), Espanol, and Francais. Change your language in Settings > Account > Language."
+  },
+  {
+    "id": 174,
+    "topic": "Live Streams",
+    "question": "How do I watch a live stream?",
+    "answer": "If a challenge has live streaming enabled, a \"Stream\" button appears on the challenge page. Click it to go to the live page."
+  },
+  {
+    "id": 175,
+    "topic": "Live Streams",
+    "question": "What does the live page show?",
+    "answer": "The live page shows a schedule of upcoming live events, multiple stages (configurable by the organizer), and an On-Demand section for watching past recordings."
+  },
+  {
+    "id": 176,
+    "topic": "Live Streams",
+    "question": "Are live streams restricted?",
+    "answer": "Some stages may be restricted to participants only, jury members only, or both. If you don't have access, you'll be redirected to log in or shown an access restriction message."
+  },
+  {
+    "id": 177,
+    "topic": "Garden Projects",
+    "question": "What is the Garden?",
+    "answer": "The Garden is a section for standalone projects that exist independently from hackathons. These are ongoing projects not tied to a specific competition."
+  },
+  {
+    "id": 178,
+    "topic": "Garden Projects",
+    "question": "How do Garden invitations work?",
+    "answer": "Garden invitations appear on your Dashboard under \"Garden Invitations\". Each invite shows the project name, your invited role (Participant or Mentor), status, and expiry date. You can accept or reject directly from the Dashboard."
+  },
+  {
+    "id": 179,
+    "topic": "General",
+    "question": "My mentor hasn't replied. What should I do?",
+    "answer": "Mentors may have variable response times. We recommend waiting or contacting the organizer if necessary."
+  },
+  {
+    "id": 180,
+    "topic": "General",
+    "question": "I can't withdraw from the challenge. What are my options?",
+    "answer": "Some challenges do not allow participants to withdraw once they have joined. If you wish to withdraw, please contact the hackathon organizer directly."
+  },
+  {
+    "id": 181,
+    "topic": "General",
+    "question": "How do I contact TAIKAI support?",
+    "answer": "Visit the Support page at /support or email support@taikai.network."
+  },
+  {
+    "id": 182,
+    "topic": "General",
+    "question": "How do I apply for a job or internship at TAIKAI?",
+    "answer": "Visit TAIKAI's official website for career opportunities, or send your application to support@taikai.network indicating you are interested in a role at TAIKAI."
+  },
+  {
+    "id": 183,
+    "topic": "General",
+    "question": "How much does it cost to host a hackathon on TAIKAI?",
+    "answer": "Pricing depends on the type and scale of the event. Contact TAIKAI at support@taikai.network or visit the \"Organize Your Hackathon\" page on the website for pricing information."
+  },
+  {
+    "id": 184,
+    "topic": "General",
+    "question": "I won a hackathon prize but the organizer has not contacted me about payment. What should I do?",
+    "answer": "First, check if your prize has been allocated as $LX tokens in your TAIKAI balance (Settings > Deposit & Withdrawal). If no tokens have been allocated and you haven't heard from the organizer, contact the organizer directly. If you are unable to reach them, contact support@taikai.network for assistance."
+  },
+  {
+    "id": 185,
+    "topic": "General",
+    "question": "Does TAIKAI have a warranty system if an organizer doesn't distribute prizes?",
+    "answer": "TAIKAI facilitates prize distribution through the platform's token system. If an organizer fails to distribute prizes, contact support@taikai.network. TAIKAI will investigate, but ultimate prize fulfillment responsibility lies with the organizer."
+  },
+  {
+    "id": 186,
+    "topic": "General",
+    "question": "Where can I find pricing information for hosting a hackathon?",
+    "answer": "Contact TAIKAI at support@taikai.network or visit the \"Organize Your Hackathon\" page for current pricing details."
+  },
+  {
+    "id": 187,
+    "topic": "General",
+    "question": "I want to contact the TAIKAI founders directly. How can I do that?",
+    "answer": "For most inquiries, support@taikai.network is the best point of contact. For partnership or investment matters, look for contact information on TAIKAI's official website or LinkedIn page."
+  },
+  {
+    "id": 188,
+    "topic": "General",
+    "question": "Where can I find the Discord or other community channels for a hackathon?",
+    "answer": "Check the hackathon's Resources tab or Updates tab -- organizers typically post community links there. You can also look in the hackathon's Rules or Overview tab for links to Discord or other channels."
+  },
+  {
+    "id": 189,
+    "topic": "General",
+    "question": "I have an issue that TAIKAI support couldn't resolve directly. What should I do?",
+    "answer": "If your issue requires escalation, reply to your support conversation and ask for it to be escalated. You can also reach out via TAIKAI's official social media channels. For urgent matters, be as specific as possible about the issue and any steps already taken."
+  },
+  {
+    "id": 190,
+    "topic": "General",
+    "question": "How many hackathons has TAIKAI organized?",
+    "answer": "TAIKAI has hosted hundreds of hackathons and challenges since its founding. For up-to-date numbers, check TAIKAI's website or social media channels."
+  },
+  {
+    "id": 191,
+    "topic": "General",
+    "question": "Can I host a hackathon on TAIKAI for free?",
+    "answer": "TAIKAI offers different plans for organizers. Contact support@taikai.network or visit the \"Organize Your Hackathon\" page to learn about free and paid options."
+  },
+  {
+    "id": 192,
+    "topic": "General",
+    "question": "I want to get a TAIKAI event or conference listed on your blog or events page. Who should I contact?",
+    "answer": "Reach out to support@taikai.network with the event details and request to have it featured on TAIKAI's blog or events page."
+  },
+  {
+    "id": 193,
+    "topic": "General",
+    "question": "I want to reach out about marketing or promotion proposals. Who should I contact?",
+    "answer": "Send your proposal to support@taikai.network and it will be forwarded to the appropriate team."
+  },
+  {
+    "id": 194,
+    "topic": "General",
+    "question": "Does TAIKAI offer on-site or in-person support for hackathons?",
+    "answer": "TAIKAI primarily offers remote platform support. For on-site support options, contact support@taikai.network to discuss your event's needs."
+  },
+  {
+    "id": 195,
+    "topic": "General",
+    "question": "Is TAIKAI a SaaS platform or can I install it on my own servers?",
+    "answer": "TAIKAI is a SaaS (Software as a Service) platform -- it is hosted and managed by TAIKAI. It is not available for self-hosting installation."
+  },
+  {
+    "id": 196,
+    "topic": "General",
+    "question": "Can I unsubscribe from TAIKAI marketing emails?",
+    "answer": "Yes. Each marketing email includes an unsubscribe link at the bottom. Click it to opt out. Note that unsubscribing from marketing emails will not affect transactional emails (such as password resets or hackathon notifications) -- manage those separately in Settings > Notifications."
+  }
+]
