@@ -28,7 +28,7 @@ Qwen3-4B is a 4-billion parameter dense model from the Qwen3 family. It's an exc
 - A MacBook Pro with Apple Silicon (this tutorial uses an M1 Pro with 16GB RAM — 32GB is better)
 - Python 3.10+
 - Basic familiarity with Python, PyTorch, and the command line
-- An Anthropic API key (for generating synthetic data — you can substitute any LLM API)
+- An OpenRouter API key (for generating synthetic data via any top-tier model — sign up at openrouter.ai)
 
 ### Why Not Unsloth?
 
@@ -59,7 +59,7 @@ Install the dependencies:
 ```bash
 uv add torch torchvision torchaudio
 uv add "transformers>=4.51.0" datasets peft trl accelerate
-uv add anthropic  # for synthetic data generation
+uv add openai  # for synthetic data generation via OpenRouter
 uv add huggingface_hub
 ```
 
@@ -119,9 +119,14 @@ Create a file called `generate_training_data.py`:
 import json
 import os
 import time
-from anthropic import Anthropic
+from openai import OpenAI
 
-client = Anthropic()  # Uses ANTHROPIC_API_KEY env var
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.environ["OPENROUTER_API_KEY"],
+)
+
+MODEL = "anthropic/claude-sonnet-4"  # Or any model on OpenRouter
 
 def load_faqs(path="faqs.json"):
     with open(path) as f:
@@ -149,13 +154,13 @@ Include variety in:
 Return ONLY a JSON array of strings, no other text. Example format:
 ["question 1", "question 2", "question 3"]"""
 
-    response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+    response = client.chat.completions.create(
+        model=MODEL,
         max_tokens=2000,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
 
-    raw = response.content[0].text.strip()
+    raw = response.choices[0].message.content.strip()
     # Clean potential markdown code fences
     raw = raw.replace("```json", "").replace("```", "").strip()
     variants = json.loads(raw)
@@ -181,13 +186,13 @@ Generate {num_variants} different answer phrasings that:
 Return ONLY a JSON array of strings. Example format:
 ["answer 1", "answer 2", "answer 3"]"""
 
-    response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+    response = client.chat.completions.create(
+        model=MODEL,
         max_tokens=3000,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
 
-    raw = response.content[0].text.strip()
+    raw = response.choices[0].message.content.strip()
     raw = raw.replace("```json", "").replace("```", "").strip()
     return json.loads(raw)
 
@@ -288,13 +293,13 @@ if __name__ == "__main__":
 Run the script:
 
 ```bash
-export ANTHROPIC_API_KEY="your-key-here"
+export OPENROUTER_API_KEY="your-key-here"
 uv run python generate_training_data.py
 ```
 
 With 196 FAQs, this generates approximately 2,156 training examples (196 FAQs x 10 variants + 196 originals). The script takes around 30–40 minutes to run due to the API calls. When it's done, you'll have `train.jsonl` and `val.jsonl` in the chat-format that Hugging Face training libraries expect.
 
-> **Cost note:** Generating synthetic data for 196 FAQs with Claude Sonnet costs roughly $5–10 in API calls. This is a one-time cost that produces a high-quality training dataset.
+> **Cost note:** Generating synthetic data for 196 FAQs via OpenRouter costs roughly $5–10 in API calls (varies by model choice). This is a one-time cost that produces a high-quality training dataset. OpenRouter lets you swap models easily — try `google/gemini-2.5-flash` for a cheaper alternative or `anthropic/claude-sonnet-4` for higher quality.
 
 ### What the Training Data Looks Like
 
@@ -316,12 +321,18 @@ Each entry follows the conversational format that Qwen3 expects (ChatML):
 
 We'll use **Qwen3-4B** as our base model. Unlike Llama models, Qwen3 doesn't require a license agreement — you can download it directly.
 
+### Install Hugging Face CLI
+
+```
+curl -LsSf https://hf.co/cli/install.sh | bash
+```
+
 ### Log In to Hugging Face
 
 Create an access token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens), then log in:
 
 ```bash
-huggingface-cli login  # Paste your token when prompted
+hf auth login  # Paste your token when prompted
 ```
 
 ### Download
@@ -795,7 +806,7 @@ Here's what we built, end to end:
 | Step | What | Tool |
 |------|------|------|
 | 1 | Defined FAQ knowledge base (196 TAIKAI FAQs) | JSON file |
-| 2 | Generated synthetic training data (~2,156 examples) | Claude API |
+| 2 | Generated synthetic training data (~2,156 examples) | OpenRouter API |
 | 3 | Downloaded base model | Hugging Face Hub |
 | 4 | Fine-tuned with LoRA on Qwen3-4B | PyTorch + Transformers + PEFT + TRL |
 | 5 | Merged LoRA weights & exported to GGUF | PEFT + llama.cpp converter |

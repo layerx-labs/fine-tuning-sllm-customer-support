@@ -9,6 +9,7 @@ dependencies = [
     "anthropic>=0.86.0",
     "datasets>=4.8.3",
     "huggingface-hub>=1.7.2",
+    "openai>=2.29.0",
     "peft>=0.18.1",
     "torch>=2.10.0",
     "torchaudio>=2.10.0",
