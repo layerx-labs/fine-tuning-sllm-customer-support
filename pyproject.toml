@@ -1,0 +1,18 @@
+[project]
+name = "fine-tunning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "accelerate>=1.13.0",
+    "anthropic>=0.86.0",
+    "datasets>=4.8.3",
+    "huggingface-hub>=1.7.2",
+    "peft>=0.18.1",
+    "torch>=2.10.0",
+    "torchaudio>=2.10.0",
+    "torchvision>=0.25.0",
+    "transformers>=4.51.0",
+    "trl>=0.29.1",
+]
