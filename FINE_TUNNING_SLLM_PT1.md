@@ -657,19 +657,26 @@ uv run python merge_and_export.py
 
 ### Convert to GGUF
 
-Clone llama.cpp and use its conversion script:
+Install llama.cpp via Homebrew (which includes the conversion script and pre-built binaries with Metal support):
 
 ```bash
-# Clone llama.cpp
-git clone https://github.com/ggerganov/llama.cpp.git
-cd llama.cpp
+brew install llama.cpp
+```
 
-# Install Python dependencies for conversion
-uv pip install -r requirements/requirements-convert_hf_to_gguf.txt
+Install the Python dependencies needed by the conversion script. The `gguf` package must be installed from the llama.cpp repo to stay in sync with the Homebrew version:
 
-# Convert the merged model to GGUF format
-uv run python convert_hf_to_gguf.py ../taikai-support-merged \
-    --outfile ../taikai-support-q8_0.gguf \
+```bash
+uv add sentencepiece
+uv pip install "gguf @ git+https://github.com/ggerganov/llama.cpp.git#subdirectory=gguf-py"
+```
+
+> **Important:** Install `gguf` from git **after** any `uv add` commands. Running `uv add` re-resolves all dependencies and will replace the git-installed `gguf` with the PyPI version, which may be out of sync with the Homebrew llama.cpp conversion script. For the same reason, use `python` (not `uv run`) for the conversion below.
+
+Convert the merged model to GGUF format using the Homebrew-installed script:
+
+```bash
+.venv/bin/python $(brew --prefix llama.cpp)/bin/convert_hf_to_gguf.py ./taikai-support-merged \
+    --outfile ./taikai-support-q8_0.gguf \
     --outtype q8_0
 ```
 
@@ -677,25 +684,15 @@ The `q8_0` quantization provides a good balance between quality and size. For a 
 
 ---
 
-## Step 8: Build and Serve with llama.cpp
+## Step 8: Serve with llama.cpp
 
-### Build llama.cpp with Metal Support
-
-```bash
-cd llama.cpp
-
-# Build with Metal (Apple Silicon GPU acceleration)
-cmake -B build -DLLAMA_METAL=ON
-cmake --build build --config Release -j
-
-# The server binary will be at build/bin/llama-server
-```
+Since we installed llama.cpp via Homebrew, the server binary is already built with Metal (Apple Silicon GPU) support — no compilation needed.
 
 ### Start the Server
 
 ```bash
-./build/bin/llama-server \
-    -m ../taikai-support-q8_0.gguf \
+llama-server \
+    -m ./taikai-support-q8_0.gguf \
     --host 0.0.0.0 \
     --port 8080 \
     -ngl 99 \
