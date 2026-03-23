@@ -126,7 +126,7 @@ client = OpenAI(
     api_key=os.environ["OPENROUTER_API_KEY"],
 )
 
-MODEL = "anthropic/claude-sonnet-4"  # Or any model on OpenRouter
+MODEL = "openai/gpt-5.4-mini"  # Or any model on OpenRouter
 
 def load_faqs(path="faqs.json"):
     with open(path) as f:
@@ -745,7 +745,16 @@ response = client.chat.completions.create(
     model="taikai-support",
     messages=[
         {"role": "system", "content": "You are a helpful customer support assistant for TAIKAI, a hackathon and open innovation platform."},
-        {"role": "user", "content": "i cant withdraw my tokens and 2fa isnt working help"},
+        {"role": "user", "content": "curl http://localhost:8080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {"role": "system", "content": "You are a helpful customer support assistant for TAIKAI, a hackathon and open innovation platform."},
+      {"role": "user", "content": "how do i join a hackathon and submit a project?"}
+    ],
+    "temperature": 0.7,
+    "max_tokens": 256
+  }'p"},
     ],
     temperature=0.7,
     max_tokens=256,
@@ -811,4 +820,4 @@ Here's what we built, end to end:
 
 The total cost: roughly $5–10 in API calls for synthetic data generation, and 2–4 hours of training time on a MacBook Pro. The result is a fast, private, fully offline customer support model that runs on your laptop — trained on real TAIKAI FAQ data covering everything from account registration to blockchain token withdrawals.
 
-The full code for this tutorial is available at [your-github-repo-here].
+The full code for this tutorial is available at [https://github.com/layerx-labs/fine-tuning-sllm-customer-support].
