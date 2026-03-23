@@ -93,7 +93,7 @@ training_args = TrainingArguments(
     gradient_accumulation_steps=GRADIENT_ACCUMULATION,
     learning_rate=LEARNING_RATE,
     weight_decay=0.01,
-    warmup_ratio=0.1,
+    warmup_steps=50,
     lr_scheduler_type="cosine",
     logging_steps=10,
     eval_strategy="steps",
@@ -105,7 +105,6 @@ training_args = TrainingArguments(
     metric_for_best_model="eval_loss",
     fp16=False,              # MPS doesn't support fp16 training flag
     bf16=False,              # MPS doesn't support bf16 training flag either
-    use_mps_device=(device == "mps"),
     dataloader_pin_memory=False,  # Required for MPS
     report_to="none",        # Disable wandb etc.
     gradient_checkpointing=True,  # Save memory at the cost of speed
@@ -120,7 +119,6 @@ trainer = SFTTrainer(
     train_dataset=dataset["train"],
     eval_dataset=dataset["validation"],
     processing_class=tokenizer,
-    max_seq_length=MAX_SEQ_LENGTH,
 )
 
 # ──────────────────────────────────────────────

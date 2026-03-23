@@ -1,1 +1,6 @@
 .env
+taikai-support-merged
+taikai-support-q8_0.gguf
+taikai-support-model
+FINE_TUNNING_SLLM_PT1.md
+FINE_TUNNING_SLLM_PT2.md
