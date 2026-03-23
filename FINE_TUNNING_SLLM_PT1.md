@@ -8,7 +8,9 @@
 
 Large language models are powerful, but calling a cloud API for every customer support query gets expensive fast. What if you could fine-tune a small, open-source model to answer your company's support questions — and run it entirely on your laptop?
 
-That's exactly what this tutorial covers. We'll take a real set of FAQs from **TAIKAI** (a hackathon and open innovation platform), generate synthetic training data from those FAQs, fine-tune Alibaba's **Qwen3-4B** using LoRA on a **MacBook Pro M1 Pro**, and then serve the resulting model locally using **llama.cpp**.
+> **A note on approach:** This tutorial is meant to help you understand the fine-tuning process end to end. In practice, you don't always need to fine-tune a model to build a good customer support chatbot — prompt engineering combined with RAG (Retrieval-Augmented Generation) techniques can achieve excellent results with far less effort. Fine-tuning shines when you need a smaller, faster, fully offline model or when you want to deeply embed domain-specific behavior into the model itself. Understanding both approaches lets you pick the right tool for the job.
+
+That's exactly what this tutorial covers. Built by [**LayerX**](https://layerx.xyz/) — an AI studio that helps companies create intelligent workflows and become more efficient with AI — we'll take a real set of FAQs from **TAIKAI** (a hackathon and open innovation platform), generate synthetic training data from those FAQs, fine-tune Alibaba's **Qwen3-4B** using LoRA on a **MacBook Pro M1 Pro**, and then serve the resulting model locally using **llama.cpp**.
 
 ### Why Qwen3-4B?
 
@@ -113,182 +115,43 @@ With 196 FAQs across topics like Account & Registration, Login & Authentication,
 
 A key insight: you don't fine-tune on the raw FAQs. Real users don't ask questions the way FAQ writers phrase them. A user might ask "yo how do i get into the hackathon" instead of "How do I join a hackathon?" or "my project wont publish wtf" instead of "How do I publish my project?" We need to generate diverse, natural rephrasings of each question and pair them with the correct answer.
 
-Create a file called `generate_training_data.py`:
+The script (`generate_training_data.py` — [full source on GitHub](https://github.com/layerx-labs/fine-tuning-sllm-customer-support/blob/main/generate_training_data.py)) uses the OpenRouter API to generate diverse question variants and answer rephrasings for each FAQ. Here's the core idea:
 
 ```python
-import json
-import os
-import time
-from openai import OpenAI
-
-client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=os.environ["OPENROUTER_API_KEY"],
-)
-
-MODEL = "openai/gpt-5.4-mini"  # Or any model on OpenRouter
-
-def load_faqs(path="faqs.json"):
-    with open(path) as f:
-        return json.load(f)
-
 def generate_variants(faq, num_variants=10):
     """Generate diverse question variants for a single FAQ entry."""
+    prompt = f"""Given this FAQ entry:
+    Topic: {faq['topic']}
+    Original Question: {faq['question']}
+    Answer: {faq['answer']}
 
-    prompt = f"""You are generating synthetic training data for a customer support chatbot
-for TAIKAI, a hackathon and open innovation platform.
-
-Given this FAQ entry:
-Topic: {faq['topic']}
-Original Question: {faq['question']}
-Answer: {faq['answer']}
-
-Generate {num_variants} diverse, realistic ways a real user might ask this question.
-Include variety in:
-- Formality (casual to professional)
-- Specificity (vague to detailed)
-- Emotional tone (frustrated, confused, curious, urgent)
-- Phrasing (questions, statements, complaints)
-- Typos and informal language (some, not all)
-
-Return ONLY a JSON array of strings, no other text. Example format:
-["question 1", "question 2", "question 3"]"""
+    Generate {num_variants} diverse, realistic ways a real user might ask this question.
+    Include variety in formality, specificity, emotional tone, phrasing,
+    and typos/informal language.
+    Return ONLY a JSON array of strings."""
 
     response = client.chat.completions.create(
-        model=MODEL,
-        max_tokens=2000,
+        model=MODEL, max_tokens=2000,
         messages=[{"role": "user", "content": prompt}],
     )
-
-    raw = response.choices[0].message.content.strip()
-    # Clean potential markdown code fences
-    raw = raw.replace("```json", "").replace("```", "").strip()
-    variants = json.loads(raw)
-    return variants
-
-def generate_answer_variants(faq, num_variants=3):
-    """Generate slightly different answer phrasings to avoid overfitting."""
-
-    prompt = f"""You are writing answers for a customer support chatbot for TAIKAI,
-a hackathon and open innovation platform.
-
-Given this FAQ:
-Question: {faq['question']}
-Official Answer: {faq['answer']}
-
-Generate {num_variants} different answer phrasings that:
-- Contain the same factual information
-- Vary in length (concise, medium, detailed)
-- Sound natural and helpful
-- Use slightly different wording each time
-- Always remain accurate to the official answer
-
-Return ONLY a JSON array of strings. Example format:
-["answer 1", "answer 2", "answer 3"]"""
-
-    response = client.chat.completions.create(
-        model=MODEL,
-        max_tokens=3000,
-        messages=[{"role": "user", "content": prompt}],
-    )
-
-    raw = response.choices[0].message.content.strip()
-    raw = raw.replace("```json", "").replace("```", "").strip()
-    return json.loads(raw)
-
-def build_training_examples(faqs, questions_per_faq=10, answer_variants=3):
-    """Build the full training dataset."""
-
-    training_data = []
-
-    for i, faq in enumerate(faqs):
-        print(f"Processing FAQ {i+1}/{len(faqs)}: {faq['question'][:50]}...")
-
-        # Generate question variants
-        question_variants = generate_variants(faq, num_variants=questions_per_faq)
-
-        # Generate answer variants
-        answer_options = generate_answer_variants(faq, num_variants=answer_variants)
-        # Add the original answer too
-        answer_options.append(faq['answer'])
-
-        # Pair each question variant with a randomly selected answer variant
-        import random
-        for q in question_variants:
-            a = random.choice(answer_options)
-            training_data.append({
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": "You are a helpful customer support assistant for TAIKAI, a hackathon and open innovation platform. Answer questions accurately and concisely based on your knowledge of TAIKAI's products and services."
-                    },
-                    {"role": "user", "content": q},
-                    {"role": "assistant", "content": a}
-                ],
-                "faq_id": faq["id"],
-                "topic": faq["topic"]
-            })
-
-        # Also include the original FAQ as a training example
-        training_data.append({
-            "messages": [
-                {
-                    "role": "system",
-                    "content": "You are a helpful customer support assistant for TAIKAI, a hackathon and open innovation platform. Answer questions accurately and concisely based on your knowledge of TAIKAI's products and services."
-                },
-                {"role": "user", "content": faq["question"]},
-                {"role": "assistant", "content": faq["answer"]}
-            ],
-            "faq_id": faq["id"],
-            "topic": faq["topic"]
-        })
-
-        # Be nice to the API
-        time.sleep(1)
-
-    return training_data
-
-def main():
-    faqs = load_faqs()
-    print(f"Loaded {len(faqs)} FAQs")
-
-    training_data = build_training_examples(
-        faqs,
-        questions_per_faq=10,
-        answer_variants=3
-    )
-
-    print(f"\nGenerated {len(training_data)} training examples")
-
-    # Shuffle the data
-    import random
-    random.shuffle(training_data)
-
-    # Split into train/validation (90/10)
-    split_idx = int(len(training_data) * 0.9)
-    train_data = training_data[:split_idx]
-    val_data = training_data[split_idx:]
-
-    # Save
-    with open("train.jsonl", "w") as f:
-        for example in train_data:
-            f.write(json.dumps(example) + "\n")
-
-    with open("val.jsonl", "w") as f:
-        for example in val_data:
-            f.write(json.dumps(example) + "\n")
-
-    print(f"Saved {len(train_data)} training and {len(val_data)} validation examples")
-
-    # Print a few samples
-    print("\n--- Sample Training Examples ---")
-    for ex in train_data[:3]:
-        print(f"\nUser: {ex['messages'][1]['content']}")
-        print(f"Assistant: {ex['messages'][2]['content'][:100]}...")
-
-if __name__ == "__main__":
-    main()
+    return json.loads(response.choices[0].message.content.strip())
 ```
+
+Each question variant is paired with a randomly selected answer variant and formatted as a ChatML conversation:
+
+```python
+training_data.append({
+    "messages": [
+        {"role": "system", "content": "You are a helpful customer support assistant for TAIKAI..."},
+        {"role": "user", "content": q},
+        {"role": "assistant", "content": a}
+    ],
+    "faq_id": faq["id"],
+    "topic": faq["topic"]
+})
+```
+
+The data is then shuffled and split 90/10 into `train.jsonl` and `val.jsonl`.
 
 Run the script:
 
@@ -342,13 +205,9 @@ The model will be downloaded automatically during training, but you can also pre
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "Qwen/Qwen3-4B"
-
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name)
-
-print(f"Model parameters: {model.num_parameters():,}")
-# ~4 billion parameters
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-4B")
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3-4B")
+print(f"Model parameters: {model.num_parameters():,}")  # ~4 billion
 ```
 
 > **Memory Note:** The full model in float32 would require ~16GB of RAM — too tight for a 16GB machine. We'll load it in float16 (~8GB) and use LoRA so that only a tiny fraction of parameters are trainable. With gradient checkpointing enabled, this fits comfortably on 16GB.
@@ -363,150 +222,56 @@ Qwen3 models support a "thinking mode" where the model generates internal reason
 
 This is the core of the tutorial. We'll use LoRA (Low-Rank Adaptation) to fine-tune only a tiny subset of the model's parameters, which makes training feasible on a laptop.
 
-Create a file called `train.py`:
+The training script (`train.py` — [full source on GitHub](https://github.com/layerx-labs/fine-tuning-sllm-customer-support/blob/main/train.py)) loads Qwen3-4B in float16, applies LoRA, and trains with `SFTTrainer`. Here are the key parts:
+
+**LoRA configuration** — we target both attention and MLP layers, keeping only ~0.22% of parameters trainable:
 
 ```python
-import torch
-from datasets import load_dataset
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    TrainingArguments,
-)
-from peft import LoraConfig, get_peft_model, TaskType
-from trl import SFTTrainer
-
-# ──────────────────────────────────────────────
-# Configuration
-# ──────────────────────────────────────────────
-MODEL_NAME = "Qwen/Qwen3-4B"
-OUTPUT_DIR = "./taikai-support-model"
-EPOCHS = 3
-BATCH_SIZE = 1          # Keep low for 16GB RAM
-GRADIENT_ACCUMULATION = 8  # Effective batch size = 1 * 8 = 8
-LEARNING_RATE = 2e-4
-MAX_SEQ_LENGTH = 512
-LORA_R = 16             # Rank of the LoRA matrices
-LORA_ALPHA = 32         # Scaling factor (usually 2x rank)
-LORA_DROPOUT = 0.05
-
-# ──────────────────────────────────────────────
-# Detect device
-# ──────────────────────────────────────────────
-if torch.backends.mps.is_available():
-    device = "mps"
-    print("Using Apple Silicon MPS backend")
-elif torch.cuda.is_available():
-    device = "cuda"
-    print("Using CUDA")
-else:
-    device = "cpu"
-    print("Warning: Using CPU — training will be very slow")
-
-# ──────────────────────────────────────────────
-# Load tokenizer and model
-# ──────────────────────────────────────────────
-print("Loading model and tokenizer...")
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-# Qwen3 already has a proper pad token, but set it if missing
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
-tokenizer.padding_side = "right"
-
-model = AutoModelForCausalLM.from_pretrained(
-    MODEL_NAME,
-    torch_dtype=torch.float16,  # Use float16 to save memory
-    device_map=None,             # We'll handle device placement manually
-)
-
-# ──────────────────────────────────────────────
-# Configure LoRA
-# ──────────────────────────────────────────────
 lora_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM,
-    r=LORA_R,
-    lora_alpha=LORA_ALPHA,
-    lora_dropout=LORA_DROPOUT,
+    r=16,                    # Rank of the LoRA matrices
+    lora_alpha=32,           # Scaling factor (usually 2x rank)
+    lora_dropout=0.05,
     target_modules=[
         "q_proj", "k_proj", "v_proj", "o_proj",  # Attention layers
         "gate_proj", "up_proj", "down_proj",       # MLP layers
     ],
     bias="none",
 )
+# trainable params: ~8.9M || all params: ~4B || trainable%: ~0.22%
+```
 
-model = get_peft_model(model, lora_config)
-model.print_trainable_parameters()
-# Expected output: trainable params: ~8.9M || all params: ~4B || trainable%: ~0.22%
+**MPS-specific training arguments** — a few flags are critical for Apple Silicon:
 
-# ──────────────────────────────────────────────
-# Load dataset
-# ──────────────────────────────────────────────
-print("Loading dataset...")
-dataset = load_dataset("json", data_files={
-    "train": "train.jsonl",
-    "validation": "val.jsonl"
-})
-
-print(f"Training examples: {len(dataset['train'])}")
-print(f"Validation examples: {len(dataset['validation'])}")
-
-# ──────────────────────────────────────────────
-# Training arguments
-# ──────────────────────────────────────────────
+```python
 training_args = TrainingArguments(
-    output_dir=OUTPUT_DIR,
-    num_train_epochs=EPOCHS,
-    per_device_train_batch_size=BATCH_SIZE,
-    per_device_eval_batch_size=BATCH_SIZE,
-    gradient_accumulation_steps=GRADIENT_ACCUMULATION,
-    learning_rate=LEARNING_RATE,
-    weight_decay=0.01,
-    warmup_ratio=0.1,
-    lr_scheduler_type="cosine",
-    logging_steps=10,
-    eval_strategy="steps",
-    eval_steps=50,
-    save_strategy="steps",
-    save_steps=50,
-    save_total_limit=3,
-    load_best_model_at_end=True,
-    metric_for_best_model="eval_loss",
-    fp16=False,              # MPS doesn't support fp16 training flag
-    bf16=False,              # MPS doesn't support bf16 training flag either
+    output_dir="./taikai-support-model",
+    num_train_epochs=3,
+    per_device_train_batch_size=1,       # Keep low for 16GB RAM
+    gradient_accumulation_steps=8,        # Effective batch size = 8
+    learning_rate=2e-4,
+    fp16=False,                           # MPS doesn't support fp16 training flag
+    bf16=False,                           # MPS doesn't support bf16 either
     use_mps_device=(device == "mps"),
-    dataloader_pin_memory=False,  # Required for MPS
-    report_to="none",        # Disable wandb etc.
-    gradient_checkpointing=True,  # Save memory at the cost of speed
+    dataloader_pin_memory=False,          # Required for MPS
+    gradient_checkpointing=True,          # Save memory at the cost of speed
+    # ... see full source for remaining args
 )
+```
 
-# ──────────────────────────────────────────────
-# Create trainer
-# ──────────────────────────────────────────────
+**Training and saving** — `SFTTrainer` from TRL handles the chat-format dataset automatically:
+
+```python
 trainer = SFTTrainer(
     model=model,
     args=training_args,
     train_dataset=dataset["train"],
     eval_dataset=dataset["validation"],
     processing_class=tokenizer,
-    max_seq_length=MAX_SEQ_LENGTH,
+    max_seq_length=512,
 )
-
-# ──────────────────────────────────────────────
-# Train!
-# ──────────────────────────────────────────────
-print("Starting training...")
-print(f"Effective batch size: {BATCH_SIZE * GRADIENT_ACCUMULATION}")
-print(f"Total training steps: ~{len(dataset['train']) * EPOCHS // (BATCH_SIZE * GRADIENT_ACCUMULATION)}")
-
 trainer.train()
-
-# ──────────────────────────────────────────────
-# Save the LoRA adapter
-# ──────────────────────────────────────────────
-print("Saving model...")
-trainer.save_model(OUTPUT_DIR)
-tokenizer.save_pretrained(OUTPUT_DIR)
-print(f"Model saved to {OUTPUT_DIR}")
+trainer.save_model("./taikai-support-model")
 ```
 
 ### Run the Training
@@ -543,72 +308,30 @@ Watch for the validation loss decreasing — that's your signal that the model i
 
 ## Step 6: Test the Fine-Tuned Model
 
-Before exporting, let's verify the model works. Create `test_model.py`:
+Before exporting, let's verify the model works. The test script (`test_model.py` — [full source on GitHub](https://github.com/layerx-labs/fine-tuning-sllm-customer-support/blob/main/test_model.py)) loads the base model with the LoRA adapter and runs inference. The key part is disabling Qwen3's thinking mode for direct answers:
 
 ```python
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from peft import PeftModel
-
-MODEL_NAME = "Qwen/Qwen3-4B"
-ADAPTER_PATH = "./taikai-support-model"
-
-# Load base model + LoRA adapter
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-base_model = AutoModelForCausalLM.from_pretrained(
-    MODEL_NAME,
-    torch_dtype=torch.float16,
+# Disable thinking mode for direct answers (no <think> blocks)
+input_text = tokenizer.apply_chat_template(
+    messages, tokenize=False, add_generation_prompt=True,
+    enable_thinking=False,
 )
-model = PeftModel.from_pretrained(base_model, ADAPTER_PATH)
-model.eval()
+```
 
-# Move to MPS if available
-device = "mps" if torch.backends.mps.is_available() else "cpu"
-model = model.to(device)
+It tests with a mix of formal and casual questions:
 
-def ask(question):
-    messages = [
-        {"role": "system", "content": "You are a helpful customer support assistant for TAIKAI, a hackathon and open innovation platform. Answer questions accurately and concisely."},
-        {"role": "user", "content": question},
-    ]
-
-    # Disable thinking mode for direct answers (no <think> blocks)
-    input_text = tokenizer.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=True,
-        enable_thinking=False,
-    )
-    inputs = tokenizer(input_text, return_tensors="pt").to(device)
-
-    with torch.no_grad():
-        output = model.generate(
-            **inputs,
-            max_new_tokens=256,
-            temperature=0.7,
-            top_p=0.9,
-            do_sample=True,
-        )
-
-    response = tokenizer.decode(output[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
-    return response
-
-# Test with various questions — mixing exact FAQ phrasing with natural user language
+```python
 test_questions = [
     "How do I create a TAIKAI account?",
     "yo how do i get into a hackathon",
     "my project wont publish what do i do",
     "how does the voting system work for judges?",
     "Can I withdraw my LX tokens?",
-    "i signed up with google but now i cant find my account",
-    "What is a POP and how do I mint one?",
-    "how do i find teammates for a hackathon",
-    "Is there a way to reset my 2FA?",
-    "what's the difference between a challenge and a hackathon on taikai",
 ]
+```
 
-for q in test_questions:
-    print(f"\nQ: {q}")
-    print(f"A: {ask(q)}")
-    print("-" * 60)
+```bash
+uv run python test_model.py
 ```
 
 ---
@@ -619,36 +342,12 @@ To serve the model with llama.cpp, we need to merge the LoRA weights into the ba
 
 ### Merge the LoRA Adapter
 
-Create `merge_and_export.py`:
+The merge script (`merge_and_export.py` — [full source on GitHub](https://github.com/layerx-labs/fine-tuning-sllm-customer-support/blob/main/merge_and_export.py)) loads the base model, applies the LoRA adapter, merges the weights, and saves the full model:
 
 ```python
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from peft import PeftModel
-
-MODEL_NAME = "Qwen/Qwen3-4B"
-ADAPTER_PATH = "./taikai-support-model"
-MERGED_PATH = "./taikai-support-merged"
-
-print("Loading base model...")
-base_model = AutoModelForCausalLM.from_pretrained(
-    MODEL_NAME,
-    torch_dtype=torch.float16,
-)
-
-print("Loading LoRA adapter...")
-model = PeftModel.from_pretrained(base_model, ADAPTER_PATH)
-
-print("Merging weights...")
-model = model.merge_and_unload()
-
-print(f"Saving merged model to {MERGED_PATH}...")
-model.save_pretrained(MERGED_PATH)
-
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-tokenizer.save_pretrained(MERGED_PATH)
-
-print("Done! Merged model saved.")
+model = PeftModel.from_pretrained(base_model, "./taikai-support-model")
+model = model.merge_and_unload()  # Merge LoRA weights into the base model
+model.save_pretrained("./taikai-support-merged")
 ```
 
 ```bash
@@ -745,16 +444,7 @@ response = client.chat.completions.create(
     model="taikai-support",
     messages=[
         {"role": "system", "content": "You are a helpful customer support assistant for TAIKAI, a hackathon and open innovation platform."},
-        {"role": "user", "content": "curl http://localhost:8080/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "messages": [
-      {"role": "system", "content": "You are a helpful customer support assistant for TAIKAI, a hackathon and open innovation platform."},
-      {"role": "user", "content": "how do i join a hackathon and submit a project?"}
-    ],
-    "temperature": 0.7,
-    "max_tokens": 256
-  }'p"},
+        {"role": "user", "content": "i cant withdraw my tokens and 2fa isnt working help"},
     ],
     temperature=0.7,
     max_tokens=256,
@@ -820,4 +510,8 @@ Here's what we built, end to end:
 
 The total cost: roughly $5–10 in API calls for synthetic data generation, and 2–4 hours of training time on a MacBook Pro. The result is a fast, private, fully offline customer support model that runs on your laptop — trained on real TAIKAI FAQ data covering everything from account registration to blockchain token withdrawals.
 
-The full code for this tutorial is available at [https://github.com/layerx-labs/fine-tuning-sllm-customer-support].
+The full code for this tutorial is available at [github.com/layerx-labs/fine-tuning-sllm-customer-support](https://github.com/layerx-labs/fine-tuning-sllm-customer-support).
+
+---
+
+*This tutorial was built by [LayerX](https://layerx.xyz/), an AI studio helping companies create intelligent workflows and prepare for a more efficient future with AI. If you're looking to integrate custom LLMs, automate support, or build AI-powered products, reach out at [layerx.xyz](https://layerx.xyz/).*
